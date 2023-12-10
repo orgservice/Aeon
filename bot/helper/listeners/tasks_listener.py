@@ -342,7 +342,7 @@ class MirrorLeechListener:
         user_id = self.message.from_user.id
         name, _ = await format_filename(name, user_id, isMirror=not self.isLeech)
         user_dict = user_data.get(user_id, {})
-        msg = f'{escape(name)}\n\n'
+        msg = f'<code>{escape(name)}</code>\n\n'
         msg += f'<b>• Size: </b>{get_readable_file_size(size)}\n'
         msg += f'<b>• Elapsed: </b>{get_readable_time(time() - self.message.date.timestamp())}\n'
         LOGGER.info(f'Task Done: {name}')
@@ -403,10 +403,10 @@ class MirrorLeechListener:
                 if not rclonePath:
                     if INDEX_URL:
                         url_path = rutils.quote(f'{name}')
-                        share_url = f'{INDEX_URL}/{url_path}'
+                        share_url = f'{INDEX_URL}/{url_path}?a=view'
                         if mime_type == "Folder":
                             share_url += '/'
-                        buttons.ubutton('Index link', share_url)
+                        buttons.ubutton('View link', share_url)
                 buttons = extra_btns(buttons)
                 button = buttons.build_menu(2)
             elif rclonePath:
