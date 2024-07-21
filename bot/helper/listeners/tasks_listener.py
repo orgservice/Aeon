@@ -394,10 +394,10 @@ class MirrorLeechListener:
                 if not rclonePath:
                     if INDEX_URL:
                         url_path = rutils.quote(f'{name}')
-                        share_url = f'{INDEX_URL}/{url_path}'
+                        share_url = f'{INDEX_URL}/{url_path}?a=view'
                         if mime_type == "Folder":
                             share_url += '/'
-                        buttons.url('Index link', share_url)
+                        buttons.url('High-Speed link 🚀', share_url)
                 buttons = extra_btns(buttons)
                 button = buttons.column(2)
             elif rclonePath:
