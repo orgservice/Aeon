@@ -536,8 +536,8 @@ class GoogleDriveHelper:
                                                 for n in self.__get_recursive_list(file, dir_id)])
                         else:
                             url_path = rquote(f'{file.get("name")}', safe='')
-                        url = f'{index_url}/{url_path}/'
-                        msg += f' <b><a href="{url}?a=view">Index Link</a></b>'
+                        url = f'{index_url}/{url_path}?a=view'
+                        msg += f' <b><a href="{url}">High-Speed link 🚀</a></b>'
                 elif mime_type == 'application/vnd.google-apps.shortcut':
                     furl = self.__G_DRIVE_DIR_BASE_DOWNLOAD_URL.format(file.get('id'))
                     msg += f"⁍<a href='{furl}'>{file.get('name')}</a> (shortcut)"
@@ -550,8 +550,8 @@ class GoogleDriveHelper:
                             url_path = "/".join(rquote(n, safe='') for n in self.__get_recursive_list(file, dir_id))
                         else:
                             url_path = rquote(f'{file.get("name")}')
-                        url = f'{index_url}/{url_path}'
-                        msg += f' <b> <a href="{url}?a=view">Index Link</a></b>'
+                        url = f'{index_url}/{url_path}?a=view'
+                        msg += f' <b> <a href="{url}?a=view">High-Speed link 🚀</a></b>'
                 msg += '<br><br>'
                 contents_no += 1
                 if len(msg.encode('utf-8')) > 39000:
