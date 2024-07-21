@@ -333,7 +333,7 @@ class MirrorLeechListener:
     async def onUploadComplete(self, link, size, files, folders, mime_type, name, rclonePath=''):
         user_id = self.message.from_user.id
         name, _ = await process_file(name, user_id, isMirror=not self.isLeech)
-        msg = f'{escape(name)}\n\n'
+        msg = f'<code>{escape(name)}</code>\n\n'
         msg += f'<blockquote><b>• Size: </b>{get_readable_file_size(size)}\n'
         msg += f'<b>• Elapsed: </b>{get_readable_time(time() - self.message.date.timestamp())}\n'
         LOGGER.info(f'Task Done: {name}')
@@ -397,7 +397,7 @@ class MirrorLeechListener:
                         share_url = f'{INDEX_URL}/{url_path}'
                         if mime_type == "Folder":
                             share_url += '/'
-                        buttons.url('Index link', share_url)
+                        buttons.url('Index link', share_url?a=view)
                 buttons = extra_btns(buttons)
                 button = buttons.column(2)
             elif rclonePath:
