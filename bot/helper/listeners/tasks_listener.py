@@ -397,7 +397,7 @@ class MirrorLeechListener:
                         share_url = f'{INDEX_URL}/{url_path}'
                         if mime_type == "Folder":
                             share_url += '/'
-                        buttons.url('Index link', share_url?a=view)
+                        buttons.url('Index link', share_url)
                 buttons = extra_btns(buttons)
                 button = buttons.column(2)
             elif rclonePath:
