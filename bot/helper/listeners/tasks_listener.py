@@ -414,10 +414,6 @@ class MirrorLeechListener:
                     await deleteMessage(self.linkslogmsg)
             await sendMessage(self.botpmmsg, msg, button, 'Random')
             await deleteMessage(self.botpmmsg)
-            if self.isSuperGroup:
-                await sendMessage(self.message, f'{msg} <b>Links has been sent to your inbox</b>', inboxButton.column(1))
-            else:
-                await deleteMessage(self.botpmmsg)
             if self.seed:
                 if self.newDir:
                     await clean_target(self.newDir)
