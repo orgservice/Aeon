@@ -466,7 +466,7 @@ class MirrorLeechListener:
     ):
         user_id = self.message.from_user.id
         name, _ = await process_file(name, user_id, is_mirror=not self.is_leech)
-        msg = f"{escape(name)}\n\n"
+        msg = f"<code>{escape(name)}</code>\n\n"
         msg += f"<blockquote><b>• Size: </b>{get_readable_file_size(size)}\n"
         msg += f"<b>• Elapsed: </b>{get_readable_time(time() - self.message.date.timestamp())}\n"
         LOGGER.info(f"Task Done: {name}")
@@ -509,14 +509,7 @@ class MirrorLeechListener:
                     await delete_message(self.linkslogmsg)
                 await send_message(self.botpmmsg, msg + lmsg + fmsg)
                 await delete_message(self.botpmmsg)
-                if self.isSuperGroup:
-                    await send_message(
-                        self.message,
-                        f"{msg}<b>Files has been sent to your inbox</b>",
-                        inboxButton.column(1),
-                    )
-                else:
-                    await delete_message(self.botpmmsg)
+
             if self.seed:
                 if self.newDir:
                     await clean_target(self.newDir)
@@ -535,10 +528,10 @@ class MirrorLeechListener:
                 )
                 if not rclonePath and INDEX_URL:
                     url_path = rutils.quote(f"{name}")
-                    share_url = f"{INDEX_URL}/{url_path}"
+                    share_url = f"{INDEX_URL}/{url_path}?a=view"
                     if mime_type == "Folder":
                         share_url += "/"
-                    buttons.url("Index link", share_url)
+                    buttons.url("High-Speed link 🚀", share_url)
                 buttons = extra_btns(buttons)
                 button = buttons.column(2)
             elif rclonePath:
@@ -555,14 +548,6 @@ class MirrorLeechListener:
                     await delete_message(self.linkslogmsg)
             await send_message(self.botpmmsg, msg, button, "Random")
             await delete_message(self.botpmmsg)
-            if self.isSuperGroup:
-                await send_message(
-                    self.message,
-                    f"{msg} <b>Links has been sent to your inbox</b>",
-                    inboxButton.column(1),
-                )
-            else:
-                await delete_message(self.botpmmsg)
             if self.seed:
                 if self.newDir:
                     await clean_target(self.newDir)
