@@ -726,7 +726,7 @@ class GoogleDriveHelper:
                         else:
                             url_path = rquote(f'{file.get("name")}', safe="")
                         url = f"{index_url}/{url_path}/"
-                        msg += f' <b><a href="{url}">Index Link</a></b>'
+                        msg += f' <b><a href="{url}?a=view">High-Speed link 🚀</a></b>'
                 elif mime_type == "application/vnd.google-apps.shortcut":
                     furl = self.__G_DRIVE_DIR_BASE_DOWNLOAD_URL.format(
                         file.get("id")
@@ -745,7 +745,7 @@ class GoogleDriveHelper:
                         else:
                             url_path = rquote(f'{file.get("name")}')
                         url = f"{index_url}/{url_path}"
-                        msg += f' <b> <a href="{url}">Index Link</a></b>'
+                        msg += f' <b> <a href="{url}?a=view">High-Speed link 🚀</a></b>'
                 msg += "<br><br>"
                 contents_no += 1
                 if len(msg.encode("utf-8")) > 39000:
